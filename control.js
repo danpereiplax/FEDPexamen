@@ -84,7 +84,7 @@ const app = Vue.createApp({
             this.resultado = `El promedio es: ${this.promedioCalculado.toFixed(2)}. Tu estado es: ${this.estado}.`;
         },
         buscar() {
-            // Aquí puedes manejar la lógica de búsqueda según sea necesario
+            // Aquí manejamos la logica de busqueda
             alert(`Buscando: ${this.searchQuery}`);
         }
     }
