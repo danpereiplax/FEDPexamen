@@ -39,6 +39,7 @@ button {
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
+    height: 40px; /* Aseguramos la misma altura para consistencia */
 }
 
 button:hover {
@@ -73,6 +74,7 @@ input[type="password"] {
     border-radius: 5px;
 }
 
+/* Estilo para botones específicos del formulario */
 button[type="submit"] {
     margin-top: 10px;
     padding: 10px 20px;
@@ -80,13 +82,36 @@ button[type="submit"] {
     border: none;
     color: white;
     border-radius: 5px;
-    cursor: pointer;
 }
 
 /* Estilo para mensajes de error */
 .error-message {
     color: red;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center;
+}
+
+/* Estilo específico para el mensaje de error al final */
+.error-message.final {
+    margin-top: 20px;
+    font-size: 1.1em;
+    border: 1px solid red;
+    padding: 10px;
+    background-color: #ffe6e6;
+}
+/* Ajuste para la barra de búsqueda en el header */
+header input[type="text"] {
+    width: 200px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px; 
+    box-sizing: border-box; 
+}
+
+header nav, header form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }

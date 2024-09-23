@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            currentTab: 'formulario', // Inicia mostrando el formulario de registro
             nombre: '',
             correo: '',
             contrasena: '',
@@ -68,6 +69,9 @@ const app = Vue.createApp({
         },
         irAPagina(pagina) {
             window.location.href = pagina; // Redirigir a la página seleccionada
+        },
+        showTab(tab) {
+            this.currentTab = tab; // Cambia la pestaña actual
         },
         buscar() {
             alert(`Buscando: ${this.searchQuery}`);

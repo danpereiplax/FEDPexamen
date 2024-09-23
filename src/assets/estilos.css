@@ -39,6 +39,7 @@ button {
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s;
+    height: 40px; /* Aseguramos la misma altura para consistencia */
 }
 
 button:hover {
@@ -95,3 +96,26 @@ button[type="submit"] {
     border: 1px solid red;
     padding: 10px;
     background-color
+}
+
+/* Ajuste para la barra de búsqueda en el header */
+header input[type="text"] {
+    width: 200px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px; 
+    box-sizing: border-box; 
+}
+
+header nav, header form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 5px;
+    text-align: center;
+}

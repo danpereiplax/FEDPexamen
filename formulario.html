@@ -15,38 +15,47 @@
             <nav>
                 <button @click="irAPagina('index.html')">Cálculo de Calificaciones</button>
                 <button @click="irAPagina('formulario.html')">Formulario de Registro</button>
-                <button @click="irAPagina('construccion.html')">En Construcción</button>
-                <input type="text" v-model="searchQuery" placeholder="Search" />
+                <button @click="showTab('construccion')">En Construcción</button>
+                <input type="text" v-model="searchQuery" class="search-input" placeholder="Search" />
                 <button @click="buscar">Buscar</button>
             </nav>
         </header>
 
         <!-- Contenido Principal -->
         <main>
-            <h2>Formulario de Registro</h2>
-            <form @submit.prevent="registrar">
-                <label>
-                    Nombre:
-                    <input type="text" v-model="nombre" />
-                    <p v-if="nombreError" class="error-message">{{ nombreError }}</p>
-                </label>
-                <label>
-                    Correo:
-                    <input type="email" v-model="correo" />
-                    <p v-if="correoError" class="error-message">{{ correoError }}</p>
-                </label>
-                <label>
-                    Contraseña:
-                    <input type="password" v-model="contrasena" />
-                    <p v-if="contrasenaError" class="error-message">{{ contrasenaError }}</p>
-                </label>
-                <label>
-                    Repetir Contraseña:
-                    <input type="password" v-model="repetirContrasena" />
-                    <p v-if="repetirContrasenaError" class="error-message">{{ repetirContrasenaError }}</p>
-                </label>
-                <button type="submit">Enviar</button>
-            </form>
+            <!-- Sección de Formulario de Registro -->
+            <section v-if="currentTab === 'formulario'">
+                <h2>Formulario de Registro</h2>
+                <form @submit.prevent="registrar">
+                    <label>
+                        Nombre:
+                        <input type="text" v-model="nombre" />
+                        <p v-if="nombreError" class="error-message">{{ nombreError }}</p>
+                    </label>
+                    <label>
+                        Correo:
+                        <input type="email" v-model="correo" />
+                        <p v-if="correoError" class="error-message">{{ correoError }}</p>
+                    </label>
+                    <label>
+                        Contraseña:
+                        <input type="password" v-model="contrasena" />
+                        <p v-if="contrasenaError" class="error-message">{{ contrasenaError }}</p>
+                    </label>
+                    <label>
+                        Repetir Contraseña:
+                        <input type="password" v-model="repetirContrasena" />
+                        <p v-if="repetirContrasenaError" class="error-message">{{ repetirContrasenaError }}</p>
+                    </label>
+                    <button type="submit">Enviar</button>
+                </form>
+            </section>
+
+            <!-- Sección En Construcción -->
+            <section v-if="currentTab === 'construccion'">
+                <h2>En Construcción</h2>
+                <p>Esta sección estará disponible pronto.</p>
+            </section>
         </main>
     </div>
 

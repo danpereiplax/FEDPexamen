@@ -12,7 +12,11 @@ const app = Vue.createApp({
             errorMessage: '', // Mensaje de error
             promedioCalculado: 0, // Promedio calculado
             estado: '', // Estado de aprobado o reprobado
-            searchQuery: '' // Valor de búsqueda
+            searchQuery: '', // Valor de búsqueda
+            mensajeNota1: '',
+            mensajeNota2: '',
+            mensajeNota3: '',
+            mensajeAsistencia: ''
         };
     },
     methods: {
@@ -22,6 +26,28 @@ const app = Vue.createApp({
             this.errorMessage = ''; // Limpiar mensaje de error
             this.promedioCalculado = 0; // Limpiar promedio
             this.estado = ''; // Limpiar estado
+            this.resetMensajes(); // Reiniciar mensajes de error
+        },
+        resetMensajes() {
+            this.mensajeNota1 = '';
+            this.mensajeNota2 = '';
+            this.mensajeNota3 = '';
+            this.mensajeAsistencia = '';
+        },
+        validarNota(nota) {
+            const valor = this.notas[nota];
+            if (valor < 10 || valor > 70) {
+                this[`mensaje${nota.charAt(0).toUpperCase() + nota.slice(1)}`] = 'Por favor, ingrese valores válidos para las notas.';
+            } else {
+                this[`mensaje${nota.charAt(0).toUpperCase() + nota.slice(1)}`] = '';
+            }
+        },
+        validarAsistencia() {
+            if (this.asistencia < 0 || this.asistencia > 100) {
+                this.mensajeAsistencia = 'Por favor, ingrese valores válidos para la asistencia.';
+            } else {
+                this.mensajeAsistencia = '';
+            }
         },
         calcularPromedio() {
             const { nota1, nota2, nota3 } = this.notas;

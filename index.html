@@ -29,20 +29,28 @@
                 <form @submit.prevent="calcularPromedio">
                     <label>
                         Nota 1 (10 - 70):
-                        <input type="number" v-model.number="notas.nota1" min="10" max="70" required>
+                        <input type="number" v-model.number="notas.nota1" min="10" max="70" required @blur="validarNota('nota1')">
                     </label>
+                    <div v-if="mensajeNota1" class="error-message">{{ mensajeNota1 }}</div>
+
                     <label>
                         Nota 2 (10 - 70):
-                        <input type="number" v-model.number="notas.nota2" min="10" max="70" required>
+                        <input type="number" v-model.number="notas.nota2" min="10" max="70" required @blur="validarNota('nota2')">
                     </label>
+                    <div v-if="mensajeNota2" class="error-message">{{ mensajeNota2 }}</div>
+
                     <label>
                         Nota 3 (10 - 70):
-                        <input type="number" v-model.number="notas.nota3" min="10" max="70" required>
+                        <input type="number" v-model.number="notas.nota3" min="10" max="70" required @blur="validarNota('nota3')">
                     </label>
+                    <div v-if="mensajeNota3" class="error-message">{{ mensajeNota3 }}</div>
+
                     <label>
                         Asistencia (% 0 - 100):
-                        <input type="number" v-model.number="asistencia" min="0" max="100" required>
+                        <input type="number" v-model.number="asistencia" min="0" max="100" required @blur="validarAsistencia">
                     </label>
+                    <div v-if="mensajeAsistencia" class="error-message">{{ mensajeAsistencia }}</div>
+
                     <button type="submit">Calcular</button>
 
                     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
