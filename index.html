@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Calificaciones</title>
+    <link rel="stylesheet" href="src/assets/estilos.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header con el título y los botones de navegación -->
+        <header>
+            <h1>Programación Front End</h1>
+            <nav>
+                <button @click="showTab('calificaciones')">Cálculo de Calificaciones</button>
+                <a href="formulario.html"><button>Formulario de Registro</button></a>
+                <button @click="showTab('construccion')">En Construcción</button>
+                <input type="text" v-model="searchQuery" placeholder="Search" />
+                <button @click="buscar">Buscar</button>
+            </nav>
+        </header>
+
+        <!-- Contenido Principal con las tres pestañas -->
+        <main>
+            <!-- Pestaña de Cálculo de Calificaciones -->
+            <section v-if="currentTab === 'calificaciones'">
+                <h2>Cálculo de Calificaciones</h2>
+                <form @submit.prevent="calcularPromedio">
+                    <label>
+                        Nota 1 (10 - 70):
+                        <input type="number" v-model.number="notas.nota1" min="10" max="70" required>
+                    </label>
+                    <label>
+                        Nota 2 (10 - 70):
+                        <input type="number" v-model.number="notas.nota2" min="10" max="70" required>
+                    </label>
+                    <label>
+                        Nota 3 (10 - 70):
+                        <input type="number" v-model.number="notas.nota3" min="10" max="70" required>
+                    </label>
+                    <label>
+                        Asistencia (% 0 - 100):
+                        <input type="number" v-model.number="asistencia" min="0" max="100" required>
+                    </label>
+                    <button type="submit">Calcular</button>
+
+                    <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+                </form>
+
+                <div v-if="resultado !== ''" class="resultado">
+                    <p>El promedio es: {{ promedioCalculado.toFixed(2) }}</p>
+                    <p>Tu estado es: {{ estado }}</p>
+                </div>
+
+                <p v-if="errorMessage" class="error-message final">{{ errorMessage }}</p>
+            </section>
+
+            <!-- Pestaña de En Construcción -->
+            <section v-if="currentTab === 'construccion'">
+                <h2>En Construcción</h2>
+                <p>Esta sección estará disponible pronto.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Archivo JavaScript de Vue.js -->
+    <script src="control.js"></script>
+</body>
+</html>

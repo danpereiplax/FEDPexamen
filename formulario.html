@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="src/assets/estilosf.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Header con el título y los botones de navegación -->
+        <header>
+            <h1>Programación Front End</h1>
+            <nav>
+                <button @click="irAPagina('index.html')">Cálculo de Calificaciones</button>
+                <button @click="irAPagina('formulario.html')">Formulario de Registro</button>
+                <button @click="irAPagina('construccion.html')">En Construcción</button>
+                <input type="text" v-model="searchQuery" placeholder="Search" />
+                <button @click="buscar">Buscar</button>
+            </nav>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main>
+            <h2>Formulario de Registro</h2>
+            <form @submit.prevent="registrar">
+                <label>
+                    Nombre:
+                    <input type="text" v-model="nombre" />
+                    <p v-if="nombreError" class="error-message">{{ nombreError }}</p>
+                </label>
+                <label>
+                    Correo:
+                    <input type="email" v-model="correo" />
+                    <p v-if="correoError" class="error-message">{{ correoError }}</p>
+                </label>
+                <label>
+                    Contraseña:
+                    <input type="password" v-model="contrasena" />
+                    <p v-if="contrasenaError" class="error-message">{{ contrasenaError }}</p>
+                </label>
+                <label>
+                    Repetir Contraseña:
+                    <input type="password" v-model="repetirContrasena" />
+                    <p v-if="repetirContrasenaError" class="error-message">{{ repetirContrasenaError }}</p>
+                </label>
+                <button type="submit">Enviar</button>
+            </form>
+        </main>
+    </div>
+
+    <!-- Archivo JavaScript de Vue.js -->
+    <script src="controlf.js"></script>
+</body>
+</html>
